@@ -9,7 +9,13 @@ edit here and let the sync carry the change.
 - `src/evidence-to-policy.tex`: the one TikZ source. Two variants from one file:
   `\paperversion` undefined = web (all circles 2.4cm); defined = paper
   (Research circle 2.0cm), set via `\researchsize`.
-- `build.sh`: builds both variants into `out/` (pdflatex, then Ghostscript PNG at
+- `src/evidence-to-policy-competing.tex`: a second diagram (one piece of research,
+  three competing policy analyses), built as the `competing` variant.
+- `src/evidence-to-policy-competing-research.tex`: a third diagram (three
+  studies, each feeding three competing analyses), built as `competing-research`.
+  `\highlightresearch` / `\highlightanalysis` in the main source give the
+  `web-highlight-research` and `web-highlight-analysis` variants.
+- `build.sh`: builds every variant into `out/` (pdflatex, then Ghostscript PNG at
   300 dpi web / 400 dpi paper, then PyMuPDF SVGs with glyphs as paths, white and
   `-transparent`). Byte-reproducible: an unchanged source rebuilds to identical
   bytes, so a no-op build leaves git clean.
@@ -35,7 +41,9 @@ edit here and let the sync carry the change.
 5. Tell the user which projects now have uncommitted figure changes. Those
    projects are owned by other sessions/the user; do not commit or push there.
    Consumers today: `personal-website` (web variant, three files in
-   `files/figures/`; its `docs/` copy updates on the site's next `quarto render`),
+   `files/figures/`, plus the highlight-research transparent SVG, which the
+   research page overlays exactly on the plain one, so the highlight variants
+   must keep the plain web geometry; its `docs/` copy updates on the site's next `quarto render`),
    `Registration-Tips-2026-slides` (paper PNG + e2p_slide.png),
    `BITSS-AM-2026-slides`, `SEIC-RGPB-slides` (e2p_slide.png only).
 

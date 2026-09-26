@@ -1,8 +1,13 @@
 % Evidence-to-policy diagram: Truth -> Research -> Policy Analysis ->
 % Policy Makers -> Support/Oppose. The single source for every project that
-% uses it; build with ./build.sh, which writes both variants to out/.
+% uses it; build with ./build.sh, which writes every variant to out/.
 %   web   : all circles 2.4cm (personal website)
 %   paper : Research circle 2.0cm (JMP paper, Registration-Tips deck)
+%   web-highlight-research : web sizes, Research circle highlighted (thick
+%       blue outline, light blue fill, bold label) and the Research ->
+%       Policy Analysis arrow in the same blue
+%   web-highlight-analysis : web sizes, only the Policy Analysis circle
+%       highlighted, in the same style
 
 \documentclass[border=10pt,tikz]{standalone}
 \usepackage{tikz}
@@ -12,6 +17,20 @@
 % Variant switch: build.sh defines \paperversion for the paper/slide copy,
 % in which the Research circle is smaller (2.0cm). Web: every circle 2.4cm.
 \ifdefined\paperversion\def\researchsize{2.0cm}\else\def\researchsize{2.4cm}\fi
+
+% Highlight switches: build.sh defines \highlightresearch or \highlightanalysis
+% for the web-highlight-* copies. Otherwise every node looks the same.
+\definecolor{hl}{HTML}{1F5FAD}
+% outer sep=0.2pt keeps the anchors where a 0.4pt outline puts them, so the
+% highlight variants have exactly the plain web layout and can be overlaid on it.
+\tikzset{hlnode/.style={draw=hl, fill=hl!12, line width=2pt, outer sep=0.2pt, font=\large\bfseries},
+         research/.style={}, researcharr/.style={}, analysis/.style={}}
+\ifdefined\highlightresearch
+  \tikzset{research/.style={hlnode}, researcharr/.style={draw=hl, line width=2pt}}
+\fi
+\ifdefined\highlightanalysis
+  \tikzset{analysis/.style={hlnode}}
+\fi
 
 \begin{document}
 \begin{tikzpicture}[
@@ -25,15 +44,15 @@
 ]
 
 \node[tri]                                        (T)   {Truth};
-\node[bigcirc, minimum size=\researchsize, right=1.2cm of T] (R) {Research};
-\node[bigcirc, right=1.2cm of R]                  (PA)  {Policy\\Analysis};
+\node[bigcirc, research, minimum size=\researchsize, right=1.2cm of T] (R) {Research};
+\node[bigcirc, analysis, right=1.2cm of R]        (PA)  {Policy\\Analysis};
 \node[bigcirc, above right=0.3cm and 1.8cm of PA] (PM1) {Policy\\Maker 1};
 \node[bigcirc, below right=0.3cm and 1.8cm of PA] (PM2) {Policy\\Maker 2};
 \node[rrect,   right=1.5cm of PM1]                (S)   {Support};
 \node[rrect,   right=1.5cm of PM2]                (O)   {Oppose};
 
 \draw[arr] (T)   -- (R);
-\draw[arr] (R)   -- (PA);
+\draw[arr, researcharr] (R) -- (PA);
 \draw[arr] (PA)  -- (PM1);
 \draw[arr] (PA)  -- (PM2);
 \draw[arr] (PM1) -- (S);
