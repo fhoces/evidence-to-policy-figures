@@ -35,7 +35,7 @@
 % triangle keeps the size (and the layout) it had with a one-word label: an
 % invisible \phantom{Truth} sizes it exactly as the old visible label did.
 \node[tri] (T) at (0,0) {\phantom{Truth}};
-\node[align=center, inner sep=0pt, anchor=south, font=\normalsize] at ($(T.corner 2)!0.5!(T.corner 3)+(0,3pt)$) {Pheno-\\mena};
+\node[align=center, inner sep=0pt, anchor=south, font=\normalsize] at ($(T.corner 2)!0.5!(T.corner 3)+(0,9pt)$) {Pheno-\\mena};
 \foreach \g in {1,2,3} {
   \node[bigcirc] (R\g) at (3.6, {(2-\g)*3*\pitch}) {Research\\\g};
   \foreach \j in {1,2,3}
