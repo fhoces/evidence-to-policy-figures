@@ -1,0 +1,8 @@
+# repo file	destination (relative to the folder holding this repo, i.e. ~/Desktop/sandbox)
+out/evidence-to-policy-web.svg	personal-website/files/figures/evidence-to-policy.svg
+out/evidence-to-policy-web-transparent.svg	personal-website/files/figures/evidence-to-policy-transparent.svg
+out/evidence-to-policy-web.png	personal-website/files/figures/evidence-to-policy.png
+out/evidence-to-policy-paper.png	Registration-Tips-2026-slides/figs/evidence-to-policy.png
+static/e2p_slide.png	Registration-Tips-2026-slides/figs/e2p_slide.png
+static/e2p_slide.png	BITSS-AM-2026-slides/figs/e2p_slide.png
+static/e2p_slide.png	SEIC-RGPB-slides/figs/e2p_slide.png

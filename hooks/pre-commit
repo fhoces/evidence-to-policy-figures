@@ -1,0 +1,8 @@
+#!/bin/bash
+# If the source or build script is staged, rebuild and stage out/ so every
+# commit carries outputs that match its source.
+cd "$(git rev-parse --show-toplevel)"
+if git diff --cached --name-only | grep -qE '^(src/|build\.sh$)'; then
+  ./build.sh >/dev/null || { echo "pre-commit: build failed"; exit 1; }
+  git add out/
+fi
