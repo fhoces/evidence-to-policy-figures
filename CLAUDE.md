@@ -41,8 +41,9 @@ edit here and let the sync carry the change.
 5. Tell the user which projects now have uncommitted figure changes. Those
    projects are owned by other sessions/the user; do not commit or push there.
    Consumers today: `personal-website` (web variant, three files in
-   `files/figures/`, plus the highlight-research transparent SVG, which the
-   research page overlays exactly on the plain one, so the highlight variants
+   `files/figures/`, plus the highlight-research and highlight-analysis
+   transparent SVGs, which the research and policy pages overlay exactly on the
+   plain one, so the highlight variants
    must keep the plain web geometry; its `docs/` copy updates on the site's next `quarto render`),
    `Registration-Tips-2026-slides` (paper PNG + e2p_slide.png),
    `BITSS-AM-2026-slides`, `SEIC-RGPB-slides` (e2p_slide.png only).
