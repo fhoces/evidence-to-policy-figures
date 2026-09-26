@@ -30,7 +30,12 @@
 % middle analysis of its group.
 \def\pitch{1.65}
 
-\node[tri] (T) at (0,0) {Truth};
+% Phenomena: an empty triangle with the label placed as its own node, low in
+% the triangle where it is widest, so the hyphenated label fits inside and the
+% triangle keeps the size (and the layout) it had with a one-word label: an
+% invisible \phantom{Truth} sizes it exactly as the old visible label did.
+\node[tri] (T) at (0,0) {\phantom{Truth}};
+\node[align=center, inner sep=0pt, anchor=south, font=\normalsize] at ($(T.corner 2)!0.5!(T.corner 3)+(0,3pt)$) {Pheno-\\mena};
 \foreach \g in {1,2,3} {
   \node[bigcirc] (R\g) at (3.6, {(2-\g)*3*\pitch}) {Research\\\g};
   \foreach \j in {1,2,3}
@@ -44,7 +49,7 @@
 \node[note, above=0.15cm of R1] {large effect};
 \node[note, below=0.15cm of R3] {small effect};
 
-% Truth to research: one solid path, the others possible.
+% Phenomena to research: one solid path, the others possible.
 \draw[arr]  (T) -- (R1);
 \draw[darr] (T) -- (R2);
 \draw[darr] (T) -- (R3);

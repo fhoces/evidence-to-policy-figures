@@ -1,6 +1,6 @@
 # Evidence-to-policy figures
 
-The single source for the "Truth → Research → Policy Analysis → Policy Makers →
+The single source for the "Phenomena → Research → Policy Analysis → Policy Makers →
 Support / Oppose" diagram used across Fernando Hoces de la Guardia's papers,
 slides and website.
 

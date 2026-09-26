@@ -28,9 +28,9 @@ build competing-research "" 300 src/evidence-to-policy-competing-research.tex
 python3 - <<'PY'
 import fitz
 DESC = {
-    "main": "Truth feeds research, research feeds policy analysis, and the same policy analysis leads Policy Maker 1 to support a policy and Policy Maker 2 to oppose it.",
-    "competing-research": "Truth feeds three studies with different findings, from a large effect to a small one. Each study feeds three competing policy analyses. Policy Maker 1 follows an analysis showing large gains only and supports the policy; Policy Maker 2 follows one showing large losses only and opposes it.",
-    "competing": "Truth feeds research, and the same research feeds three competing policy analyses: only gains, gains and losses, and only losses. Policy Maker 1 follows the only-gains analysis and supports the policy; Policy Maker 2 follows the only-losses analysis and opposes it.",
+    "main": "Phenomena feeds research, research feeds policy analysis, and the same policy analysis leads Policy Maker 1 to support a policy and Policy Maker 2 to oppose it.",
+    "competing-research": "Phenomena feeds three studies with different findings, from a large effect to a small one. Each study feeds three competing policy analyses. Policy Maker 1 follows an analysis showing large gains only and supports the policy; Policy Maker 2 follows one showing large losses only and opposes it.",
+    "competing": "Phenomena feeds research, and the same research feeds three competing policy analyses: only gains, gains and losses, and only losses. Policy Maker 1 follows the only-gains analysis and supports the policy; Policy Maker 2 follows the only-losses analysis and opposes it.",
 }
 for v in ("web", "paper", "web-highlight-research", "web-highlight-analysis", "competing", "competing-research"):
     TITLE = f"<title>From evidence to policy</title><desc>{DESC.get(v, DESC['main'])}</desc>"

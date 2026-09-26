@@ -22,7 +22,12 @@
   note/.style={font=\normalsize\itshape}
 ]
 
-\node[tri]                                  (T)   {Truth};
+% Phenomena: an empty triangle with the label placed as its own node, low in
+% the triangle where it is widest, so the hyphenated label fits inside and the
+% triangle keeps the size (and the layout) it had with a one-word label: an
+% invisible \phantom{Truth} sizes it exactly as the old visible label did.
+\node[tri]                                  (T)   {\phantom{Truth}};
+\node[align=center, inner sep=0pt, anchor=south, font=\normalsize] at ($(T.corner 2)!0.5!(T.corner 3)+(0,3pt)$) {Pheno-\\mena};
 \node[bigcirc, right=1.2cm of T]            (R)   {Research};
 \node[bigcirc, right=1.8cm of R]            (PA2) {Policy\\Analysis 2};
 \node[bigcirc, above=0.4cm of PA2]          (PA1) {Policy\\Analysis 1};

@@ -1,4 +1,4 @@
-% Evidence-to-policy diagram: Truth -> Research -> Policy Analysis ->
+% Evidence-to-policy diagram: Phenomena -> Research -> Policy Analysis ->
 % Policy Makers -> Support/Oppose. The single source for every project that
 % uses it; build with ./build.sh, which writes every variant to out/.
 %   web   : all circles 2.4cm (personal website)
@@ -11,7 +11,7 @@
 
 \documentclass[border=10pt,tikz]{standalone}
 \usepackage{tikz}
-\usetikzlibrary{positioning,shapes.geometric}
+\usetikzlibrary{positioning,shapes.geometric,calc}
 \pdftrailerid{}
 
 % Variant switch: build.sh defines \paperversion for the paper/slide copy,
@@ -43,7 +43,12 @@
   arr/.style={-stealth, thick}
 ]
 
-\node[tri]                                        (T)   {Truth};
+% Phenomena: an empty triangle with the label placed as its own node, low in
+% the triangle where it is widest, so the hyphenated label fits inside and the
+% triangle keeps the size (and the layout) it had with a one-word label: an
+% invisible \phantom{Truth} sizes it exactly as the old visible label did.
+\node[tri]                                        (T)   {\phantom{Truth}};
+\node[align=center, inner sep=0pt, anchor=south, font=\normalsize] at ($(T.corner 2)!0.5!(T.corner 3)+(0,3pt)$) {Pheno-\\mena};
 \node[bigcirc, research, minimum size=\researchsize, right=1.2cm of T] (R) {Research};
 \node[bigcirc, analysis, right=1.2cm of R]        (PA)  {Policy\\Analysis};
 \node[bigcirc, above right=0.3cm and 1.8cm of PA] (PM1) {Policy\\Maker 1};
