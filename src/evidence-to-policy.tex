@@ -49,8 +49,8 @@
 % variant, so the two figures line up when one slide replaces the other.
 \ifdefined\fromanalysis
 \node[bigcirc, analysis]                          (PA)  at (0,0)    {Policy\\Analysis};
-\node[bigcirc]                                    (PM1) at (4.8,1.8)  {Decision\\Maker 1};
-\node[bigcirc]                                    (PM2) at (4.8,-1.8) {Decision\\Maker 2};
+\node[bigcirc]                                    (PM1) at (4.8,2.4)  {Decision\\Maker 1};
+\node[bigcirc]                                    (PM2) at (4.8,-2.4) {Decision\\Maker 2};
 \else
 \node[tri]                                        (T)   {Truth};
 \node[bigcirc, research, minimum size=\researchsize, right=1.2cm of T] (R) {Research};
@@ -70,5 +70,8 @@
 \draw[arr] (PM1) -- (S);
 \draw[arr] (PM2) -- (O);
 
+% One frame for every from-analysis variant (the 3.6cm cubes reach x = -1.55 and
+% y = +/-4.2), so all of them have the same size and line up on slides.
+\ifdefined\fromanalysis\path (-1.56,4.21) (-1.56,-4.21);\fi
 \end{tikzpicture}
 \end{document}
