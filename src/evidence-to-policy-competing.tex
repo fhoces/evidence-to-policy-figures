@@ -34,14 +34,22 @@
 % variant puts them (4.8, 1.8) and (4.8, -1.8).
 % With \blackbox also defined, the two analyses are drawn as opaque dark boxes of the
 % same size: the "competing-from-analysis-blackbox" variant.
+% With \opaicon defined, each analysis is the Open Policy Analysis icon (static/opa-all.png,
+% the four-layer stack from opa-prop40), in a 2.4cm cell so the arrows start where they did:
+% the "competing-from-analysis-opa" variant.
 \ifdefined\blackbox
 \tikzset{pa/.style={rectangle, rounded corners=3pt, draw=black, fill=black!82, text=white,
                     minimum size=2.4cm, align=center, inner sep=2pt}}
 \else
 \tikzset{pa/.style={bigcirc}}
 \fi
+\ifdefined\opaicon
+\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (0,1.8)  {\includegraphics[height=2.4cm]{static/opa-all.png}};
+\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (0,-1.8) {\includegraphics[height=2.4cm]{static/opa-all.png}};
+\else
 \node[pa]                                  (PA1) at (0,1.8)  {Policy\\Analysis 1};
 \node[pa]                                  (PA3) at (0,-1.8) {Policy\\Analysis 2};
+\fi
 \else
 \node[tri]                                  (T)   {Truth};
 \node[bigcirc, right=1.2cm of T]            (R)   {Research};
