@@ -15,6 +15,10 @@
 % The from-analysis variant calls the policy makers "decision makers".
 \ifdefined\fromanalysis\def\maker{Decision}\else\def\maker{Policy}\fi
 
+% \cubex: x of the two analysis cubes; the build sets -2 for the blackbox and opa
+% variants (cubes 2cm further left, the rest in place) and leaves 0 elsewhere.
+\ifdefined\cubex\else\def\cubex{0}\fi
+
 \begin{document}
 \begin{tikzpicture}[
   every node/.style={font=\large},
@@ -43,11 +47,11 @@
 % A closed cube with the OPA icon's outline (static/opa-closed.png: the same 516 x 600 shape,
 % three dark faces, no layers open), drawn 3.6cm tall like the OPA icon (50% above the
 % 2.4cm circles).
-\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (0,2.4)  {\includegraphics[height=3.6cm]{static/opa-closed.png}};
-\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (0,-2.4) {\includegraphics[height=3.6cm]{static/opa-closed.png}};
+\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (\cubex,2.4)  {\includegraphics[height=3.6cm]{static/opa-closed.png}};
+\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (\cubex,-2.4) {\includegraphics[height=3.6cm]{static/opa-closed.png}};
 \else\ifdefined\opaicon
-\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (0,2.4)  {\includegraphics[height=3.6cm]{static/opa-all.png}};
-\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (0,-2.4) {\includegraphics[height=3.6cm]{static/opa-all.png}};
+\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (\cubex,2.4)  {\includegraphics[height=3.6cm]{static/opa-all.png}};
+\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (\cubex,-2.4) {\includegraphics[height=3.6cm]{static/opa-all.png}};
 % With \thirdopa also defined, a third OPA sits between the two rows, drawn from both:
 % the "competing-from-analysis-opa-third" variant.
 \ifdefined\thirdopa
@@ -102,6 +106,6 @@
 
 % One frame for every from-analysis variant (the 3.6cm cubes reach x = -1.55 and
 % y = +/-4.2), so all of them have the same size and line up on slides.
-\ifdefined\fromanalysis\path (-1.56,4.21) (-1.56,-4.21);\fi
+\ifdefined\fromanalysis\path ({\cubex-1.56},4.21) ({\cubex-1.56},-4.21);\fi
 \end{tikzpicture}
 \end{document}
