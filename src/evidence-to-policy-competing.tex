@@ -119,12 +119,14 @@
 % One frame for every from-analysis variant (the 3.6cm cubes reach x = -1.55 and
 % y = +/-4.2), so all of them have the same size and line up on slides.
 \ifdefined\thirdopa
-% Arrows meet the icons' visible corners (the icon's side corners sit 1.27cm left or right of
-% its centre and 0.9cm above or below it), not the transparent edge of the image.
-\draw[arr, shorten <=2pt, shorten >=2pt] ($(PA1.center)+(1.27,-0.9)$) -- ($(PAM.center)+(-1.27,0.9)$);
-\draw[arr, shorten <=2pt, shorten >=2pt] ($(PA3.center)+(1.27,0.9)$)  -- ($(PAM.center)+(-1.27,-0.9)$);
-\draw[arr, shorten <=2pt] ($(PAM.center)+(1.27,0.9)$)  -- (PM1);
-\draw[arr, shorten <=2pt] ($(PAM.center)+(1.27,-0.9)$) -- (PM2);
+% Right-angle connectors that meet the icons' visible edges (an icon's sides sit 1.27cm left
+% and right of its centre, its top and bottom points 1.8cm above and below it): each outer
+% analysis runs right, then turns down or up into the third OPA's top or bottom point; the
+% third OPA runs right from its side, then turns up or down into each decision maker.
+\draw[arr, shorten <=2pt, shorten >=2pt] ($(PA1.center)+(1.27,0)$) -| ($(PAM.center)+(0,1.8)$);
+\draw[arr, shorten <=2pt, shorten >=2pt] ($(PA3.center)+(1.27,0)$) -| ($(PAM.center)+(0,-1.8)$);
+\draw[arr, shorten <=2pt] ($(PAM.center)+(1.27,0.3)$)  -| (PM1.south);
+\draw[arr, shorten <=2pt] ($(PAM.center)+(1.27,-0.3)$) -| (PM2.north);
 \fi
 \ifdefined\fromanalysis\path ({\cubex-1.56},{\rowtop+1.81}) ({\cubex-1.56},{\rowbot-1.81});\fi
 \end{tikzpicture}
