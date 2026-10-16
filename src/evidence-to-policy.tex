@@ -45,15 +45,19 @@
 
 % \fromanalysis: start at the policy analysis (no Truth, no Research), the
 % "web-from-analysis" variant.
+% The policy makers sit at the same coordinates as in the competing-from-analysis
+% variant, so the two figures line up when one slide replaces the other.
 \ifdefined\fromanalysis
-\node[bigcirc, analysis]                          (PA)  {Policy\\Analysis};
+\node[bigcirc, analysis]                          (PA)  at (0,0)    {Policy\\Analysis};
+\node[bigcirc]                                    (PM1) at (4.8,1.8)  {Decision\\Maker 1};
+\node[bigcirc]                                    (PM2) at (4.8,-1.8) {Decision\\Maker 2};
 \else
 \node[tri]                                        (T)   {Truth};
 \node[bigcirc, research, minimum size=\researchsize, right=1.2cm of T] (R) {Research};
 \node[bigcirc, analysis, right=1.2cm of R]        (PA)  {Policy\\Analysis};
-\fi
 \node[bigcirc, above right=0.3cm and 1.8cm of PA] (PM1) {Policy\\Maker 1};
 \node[bigcirc, below right=0.3cm and 1.8cm of PA] (PM2) {Policy\\Maker 2};
+\fi
 \node[rrect,   right=1.5cm of PM1]                (S)   {Support};
 \node[rrect,   right=1.5cm of PM2]                (O)   {Oppose};
 

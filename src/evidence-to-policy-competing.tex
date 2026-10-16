@@ -12,6 +12,9 @@
 \usetikzlibrary{positioning,shapes.geometric,decorations.pathreplacing,calc}
 \pdftrailerid{}
 
+% The from-analysis variant calls the policy makers "decision makers".
+\ifdefined\fromanalysis\def\maker{Decision}\else\def\maker{Policy}\fi
+
 \begin{document}
 \begin{tikzpicture}[
   every node/.style={font=\large},
@@ -27,8 +30,10 @@
 
 \ifdefined\fromanalysis
 % Two rival analyses only, numbered 1 and 2 (no middle "gains & losses" one).
-\node[bigcirc]                              (PA1) {Policy\\Analysis 1};
-\node[bigcirc, below=1.2cm of PA1]          (PA3) {Policy\\Analysis 2};
+% At (0, 1.8) and (0, -1.8), so the policy makers land where the web-from-analysis
+% variant puts them (4.8, 1.8) and (4.8, -1.8).
+\node[bigcirc]                              (PA1) at (0,1.8)  {Policy\\Analysis 1};
+\node[bigcirc]                              (PA3) at (0,-1.8) {Policy\\Analysis 2};
 \else
 \node[tri]                                  (T)   {Truth};
 \node[bigcirc, right=1.2cm of T]            (R)   {Research};
@@ -36,8 +41,8 @@
 \node[bigcirc, above=0.4cm of PA2]          (PA1) {Policy\\Analysis 1};
 \node[bigcirc, below=0.4cm of PA2]          (PA3) {Policy\\Analysis 3};
 \fi
-\node[bigcirc, right=2.4cm of PA1]          (PM1) {Policy\\Maker 1};
-\node[bigcirc, right=2.4cm of PA3]          (PM2) {Policy\\Maker 2};
+\node[bigcirc, right=2.4cm of PA1]          (PM1) {\maker\\Maker 1};
+\node[bigcirc, right=2.4cm of PA3]          (PM2) {\maker\\Maker 2};
 \node[rrect,   right=1.5cm of PM1]          (S)   {Support};
 \node[rrect,   right=1.5cm of PM2]          (O)   {Oppose};
 
