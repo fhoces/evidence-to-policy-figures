@@ -4,7 +4,7 @@
 % dissertation figure (dissertation-manuscript/dissertation.tex, label
 % med_cred). Built by ./build.sh as the "competing" variant. With
 % \fromanalysis defined it starts at the policy analyses (no Truth, no
-% Research): the "competing-from-analysis" variant.
+% Research, no "Observed by citizens" brace): the "competing-from-analysis" variant.
 
 \documentclass[border=10pt,tikz]{standalone}
 \usepackage{tikz}
@@ -51,9 +51,12 @@
 \draw[arr]  (PM2) -- (O);
 
 % What citizens see: the rival analyses and what each policy maker does.
+% Left out of the competing-from-analysis variant.
+\ifdefined\fromanalysis\else
 \coordinate (bl) at ($(PA1.north west)+(0,0.5)$);
 \draw[decorate, decoration={brace, amplitude=8pt}, thick]
   (bl) -- (bl -| S.east) node[midway, above=10pt] {Observed by citizens};
+\fi
 
 \end{tikzpicture}
 \end{document}

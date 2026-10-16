@@ -31,7 +31,7 @@ import fitz
 DESC = {
     "main": "Truth feeds research, research feeds policy analysis, and the same policy analysis leads Policy Maker 1 to support a policy and Policy Maker 2 to oppose it.",
     "competing-research": "Truth feeds three studies with different findings, from a large effect to a small one. Each study feeds three competing policy analyses. Policy Maker 1 follows an analysis showing large gains only and supports the policy; Policy Maker 2 follows one showing large losses only and opposes it.",
-    "competing-from-analysis": "Three competing policy analyses of the same policy: only gains, gains and losses, and only losses. Policy Maker 1 follows the only-gains analysis and supports the policy; Policy Maker 2 follows the only-losses analysis and opposes it. Citizens observe the analyses and the decisions.",
+    "competing-from-analysis": "Three competing policy analyses of the same policy: only gains, gains and losses, and only losses. Policy Maker 1 follows the only-gains analysis and supports the policy; Policy Maker 2 follows the only-losses analysis and opposes it.",
     "competing": "Truth feeds research, and the same research feeds three competing policy analyses: only gains, gains and losses, and only losses. Policy Maker 1 follows the only-gains analysis and supports the policy; Policy Maker 2 follows the only-losses analysis and opposes it.",
 }
 for v in ("web", "paper", "web-highlight-research", "web-highlight-analysis", "competing", "competing-from-analysis", "competing-research"):
