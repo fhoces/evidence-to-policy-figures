@@ -32,8 +32,16 @@
 % Two rival analyses only, numbered 1 and 2 (no middle "gains & losses" one).
 % At (0, 1.8) and (0, -1.8), so the policy makers land where the web-from-analysis
 % variant puts them (4.8, 1.8) and (4.8, -1.8).
-\node[bigcirc]                              (PA1) at (0,1.8)  {Policy\\Analysis 1};
-\node[bigcirc]                              (PA3) at (0,-1.8) {Policy\\Analysis 2};
+% With \blackbox also defined, the two analyses are drawn as opaque dark boxes of the
+% same size: the "competing-from-analysis-blackbox" variant.
+\ifdefined\blackbox
+\tikzset{pa/.style={rectangle, rounded corners=3pt, draw=black, fill=black!82, text=white,
+                    minimum size=2.4cm, align=center, inner sep=2pt}}
+\else
+\tikzset{pa/.style={bigcirc}}
+\fi
+\node[pa]                                  (PA1) at (0,1.8)  {Policy\\Analysis 1};
+\node[pa]                                  (PA3) at (0,-1.8) {Policy\\Analysis 2};
 \else
 \node[tri]                                  (T)   {Truth};
 \node[bigcirc, right=1.2cm of T]            (R)   {Research};
