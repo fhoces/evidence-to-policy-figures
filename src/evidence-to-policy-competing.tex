@@ -4,7 +4,8 @@
 % dissertation figure (dissertation-manuscript/dissertation.tex, label
 % med_cred). Built by ./build.sh as the "competing" variant. With
 % \fromanalysis defined it starts at the policy analyses (no Truth, no
-% Research, no "Observed by citizens" brace): the "competing-from-analysis" variant.
+% Research, no middle analysis, no "Observed by citizens" brace): the
+% "competing-from-analysis" variant.
 
 \documentclass[border=10pt,tikz]{standalone}
 \usepackage{tikz}
@@ -25,14 +26,16 @@
 ]
 
 \ifdefined\fromanalysis
-\node[bigcirc]                              (PA2) {Policy\\Analysis 2};
+% Two rival analyses only, numbered 1 and 2 (no middle "gains & losses" one).
+\node[bigcirc]                              (PA1) {Policy\\Analysis 1};
+\node[bigcirc, below=1.2cm of PA1]          (PA3) {Policy\\Analysis 2};
 \else
 \node[tri]                                  (T)   {Truth};
 \node[bigcirc, right=1.2cm of T]            (R)   {Research};
 \node[bigcirc, right=1.8cm of R]            (PA2) {Policy\\Analysis 2};
-\fi
 \node[bigcirc, above=0.4cm of PA2]          (PA1) {Policy\\Analysis 1};
 \node[bigcirc, below=0.4cm of PA2]          (PA3) {Policy\\Analysis 3};
+\fi
 \node[bigcirc, right=2.4cm of PA1]          (PM1) {Policy\\Maker 1};
 \node[bigcirc, right=2.4cm of PA3]          (PM2) {Policy\\Maker 2};
 \node[rrect,   right=1.5cm of PM1]          (S)   {Support};
@@ -46,7 +49,9 @@
 \fi
 \draw[arr]  (PA1) -- node[note, above] {only gains} (PM1);
 \draw[arr]  (PA3) -- node[note, above] {only losses} (PM2);
+\ifdefined\fromanalysis\else
 \node[note, right=0.3cm of PA2] {gains \& losses};
+\fi
 \draw[arr]  (PM1) -- (S);
 \draw[arr]  (PM2) -- (O);
 
