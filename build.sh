@@ -25,7 +25,7 @@ build competing "" 300 src/evidence-to-policy-competing.tex
 build competing-from-analysis "\\def\\fromanalysis{}" 300 src/evidence-to-policy-competing.tex
 build competing-from-analysis-blackbox "\\def\\fromanalysis{}\\def\\blackbox{}\\def\\cubex{-2}" 300 src/evidence-to-policy-competing.tex
 build competing-from-analysis-opa "\\def\\fromanalysis{}\\def\\opaicon{}\\def\\cubex{-2}" 300 src/evidence-to-policy-competing.tex
-build competing-from-analysis-opa-third "\\def\\fromanalysis{}\\def\\opaicon{}\\def\\thirdopa{}\\def\\cubex{-2}\\def\\rowtop{4.926}\\def\\rowbot{-2.821}" 300 src/evidence-to-policy-competing.tex
+build competing-from-analysis-opa-third "\\def\\fromanalysis{}\\def\\opaicon{}\\def\\thirdopa{}\\def\\cubex{-2}\\def\\rowtop{5.138}\\def\\rowbot{-2.856}" 300 src/evidence-to-policy-competing.tex
 build competing-research "" 300 src/evidence-to-policy-competing-research.tex
 
 # Vector SVGs with the Computer Modern glyphs as paths: a white-background
