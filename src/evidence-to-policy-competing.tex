@@ -53,6 +53,11 @@
 % 2.4cm circles).
 \node[minimum size=2.4cm, inner sep=0pt] (PA1) at (\cubex,\rowtop)  {\includegraphics[height=3.6cm]{static/opa-closed.png}};
 \node[minimum size=2.4cm, inner sep=0pt] (PA3) at (\cubex,\rowbot) {\includegraphics[height=3.6cm]{static/opa-closed.png}};
+% The labels lie on each cube's top face: its centre is 0.91cm above the cube's centre, and
+% its edges run along (1.27, +/-0.89), so the text axes are those edge directions.
+\foreach \c/\n in {PA1/1, PA3/2}
+  \node[text=white, font=\scriptsize\bfseries, align=center, inner sep=0pt,
+        cm={0.819,0.574,-0.819,0.574,(0,0)}, scale=0.85] at ($(\c.center)+(0,0.91)$) {Policy\\Analysis \n};
 \else\ifdefined\opaicon
 \node[minimum size=2.4cm, inner sep=0pt] (PA1) at (\cubex,\rowtop)  {\includegraphics[height=3.6cm]{static/opa-all.png}};
 \node[minimum size=2.4cm, inner sep=0pt] (PA3) at (\cubex,\rowbot) {\includegraphics[height=3.6cm]{static/opa-all.png}};
@@ -92,8 +97,11 @@
 \draw[arr]  (R)   -- (PA2);
 \draw[darr] (R)   -- (PA3);
 \fi
+% The third-OPA variant has no direct arrows from the two analyses to the makers.
+\ifdefined\thirdopa\else
 \draw[arr]  (PA1) -- node[note, above] {only gains} (PM1);
 \draw[arr]  (PA3) -- node[note, above] {only losses} (PM2);
+\fi
 \ifdefined\fromanalysis\else
 \node[note, right=0.3cm of PA2] {gains \& losses};
 \fi
