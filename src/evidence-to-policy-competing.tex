@@ -32,24 +32,31 @@
 % Two rival analyses only, numbered 1 and 2 (no middle "gains & losses" one).
 % At (0, 1.8) and (0, -1.8), so the policy makers land where the web-from-analysis
 % variant puts them (4.8, 1.8) and (4.8, -1.8).
-% With \blackbox also defined, the two analyses are drawn as opaque dark boxes of the
-% same size: the "competing-from-analysis-blackbox" variant.
+% With \blackbox also defined, the two analyses are closed dark cubes of the OPA icon's
+% shape: the "competing-from-analysis-blackbox" variant.
 % With \opaicon defined, each analysis is the Open Policy Analysis icon (static/opa-all.png,
 % the four-layer stack from opa-prop40), in a 2.4cm cell so the arrows start where they did:
 % the "competing-from-analysis-opa" variant.
-\ifdefined\blackbox
-\tikzset{pa/.style={rectangle, rounded corners=3pt, draw=black, fill=black!82, text=white,
-                    minimum size=2.4cm, align=center, inner sep=2pt}}
-\else
 \tikzset{pa/.style={bigcirc}}
-\fi
-\ifdefined\opaicon
+\ifdefined\blackbox
+% A closed cube with the OPA icon's outline (static/opa-closed.png: the same 516 x 600 shape,
+% three dark faces, no layers open).
+\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (0,1.8)  {\includegraphics[height=2.4cm]{static/opa-closed.png}};
+\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (0,-1.8) {\includegraphics[height=2.4cm]{static/opa-closed.png}};
+\else\ifdefined\opaicon
 \node[minimum size=2.4cm, inner sep=0pt] (PA1) at (0,1.8)  {\includegraphics[height=2.4cm]{static/opa-all.png}};
 \node[minimum size=2.4cm, inner sep=0pt] (PA3) at (0,-1.8) {\includegraphics[height=2.4cm]{static/opa-all.png}};
+% With \thirdopa also defined, a third OPA sits between the two rows, drawn from both:
+% the "competing-from-analysis-opa-third" variant.
+\ifdefined\thirdopa
+\node[minimum size=2.0cm, inner sep=0pt] (PAM) at (2.4,0) {\includegraphics[height=2.0cm]{static/opa-all.png}};
+\draw[darr] (PA1.south) to[out=-90, in=175] (PAM.172);
+\draw[darr] (PA3.north) to[out=90, in=185] (PAM.188);
+\fi
 \else
 \node[pa]                                  (PA1) at (0,1.8)  {Policy\\Analysis 1};
 \node[pa]                                  (PA3) at (0,-1.8) {Policy\\Analysis 2};
-\fi
+\fi\fi
 \else
 \node[tri]                                  (T)   {Truth};
 \node[bigcirc, right=1.2cm of T]            (R)   {Research};
