@@ -43,16 +43,24 @@
   arr/.style={-stealth, thick}
 ]
 
+% \fromanalysis: start at the policy analysis (no Truth, no Research), the
+% "web-from-analysis" variant.
+\ifdefined\fromanalysis
+\node[bigcirc, analysis]                          (PA)  {Policy\\Analysis};
+\else
 \node[tri]                                        (T)   {Truth};
 \node[bigcirc, research, minimum size=\researchsize, right=1.2cm of T] (R) {Research};
 \node[bigcirc, analysis, right=1.2cm of R]        (PA)  {Policy\\Analysis};
+\fi
 \node[bigcirc, above right=0.3cm and 1.8cm of PA] (PM1) {Policy\\Maker 1};
 \node[bigcirc, below right=0.3cm and 1.8cm of PA] (PM2) {Policy\\Maker 2};
 \node[rrect,   right=1.5cm of PM1]                (S)   {Support};
 \node[rrect,   right=1.5cm of PM2]                (O)   {Oppose};
 
+\ifdefined\fromanalysis\else
 \draw[arr] (T)   -- (R);
 \draw[arr, researcharr] (R) -- (PA);
+\fi
 \draw[arr] (PA)  -- (PM1);
 \draw[arr] (PA)  -- (PM2);
 \draw[arr] (PM1) -- (S);
