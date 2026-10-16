@@ -25,7 +25,7 @@ build competing "" 300 src/evidence-to-policy-competing.tex
 build competing-from-analysis "\\def\\fromanalysis{}" 300 src/evidence-to-policy-competing.tex
 build competing-from-analysis-blackbox "\\def\\fromanalysis{}\\def\\blackbox{}\\def\\cubex{-2}" 300 src/evidence-to-policy-competing.tex
 build competing-from-analysis-opa "\\def\\fromanalysis{}\\def\\opaicon{}\\def\\cubex{-2}" 300 src/evidence-to-policy-competing.tex
-build competing-from-analysis-opa-third "\\def\\fromanalysis{}\\def\\opaicon{}\\def\\thirdopa{}" 300 src/evidence-to-policy-competing.tex
+build competing-from-analysis-opa-third "\\def\\fromanalysis{}\\def\\opaicon{}\\def\\thirdopa{}\\def\\cubex{-2}\\def\\rowtop{4.926}\\def\\rowbot{-2.821}" 300 src/evidence-to-policy-competing.tex
 build competing-research "" 300 src/evidence-to-policy-competing-research.tex
 
 # Vector SVGs with the Computer Modern glyphs as paths: a white-background
@@ -39,7 +39,7 @@ DESC = {
     "competing-from-analysis": "Two competing policy analyses of the same policy: one shows only gains, the other only losses. Decision Maker 1 follows the only-gains analysis and supports the policy; Decision Maker 2 follows the only-losses analysis and opposes it.",
     "competing-from-analysis-blackbox": "Two competing policy analyses of the same policy, drawn as closed black cubes: one shows only gains and leads Decision Maker 1 to support the policy; the other shows only losses and leads Decision Maker 2 to oppose it.",
     "competing-from-analysis-opa": "Two competing policy analyses of the same policy, each shown as an Open Policy Analysis with its output, assumptions, details and materials open: one shows only gains and leads Decision Maker 1 to support the policy; the other shows only losses and leads Decision Maker 2 to oppose it.",
-    "competing-from-analysis-opa-third": "Two competing policy analyses, each an Open Policy Analysis, and a third Open Policy Analysis between them, drawn from both; Decision Maker 1 still follows the only-gains analysis and Decision Maker 2 the only-losses analysis.",
+    "competing-from-analysis-opa-third": "Two competing policy analyses, each an Open Policy Analysis, feed a third Open Policy Analysis between them, which informs both decision makers.",
     "competing": "Truth feeds research, and the same research feeds three competing policy analyses: only gains, gains and losses, and only losses. Policy Maker 1 follows the only-gains analysis and supports the policy; Policy Maker 2 follows the only-losses analysis and opposes it.",
 }
 for v in ("web", "paper", "web-highlight-research", "web-highlight-analysis", "web-from-analysis", "competing", "competing-from-analysis", "competing-from-analysis-blackbox", "competing-from-analysis-opa", "competing-from-analysis-opa-third", "competing-research"):

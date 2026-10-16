@@ -18,6 +18,10 @@
 % \cubex: x of the two analysis cubes; the build sets -2 for the blackbox and opa
 % variants (cubes 2cm further left, the rest in place) and leaves 0 elsewhere.
 \ifdefined\cubex\else\def\cubex{0}\fi
+% \rowtop, \rowbot: the y of the two rows (default +/-2.4); \midx: x of the third OPA.
+\ifdefined\rowtop\else\def\rowtop{2.4}\fi
+\ifdefined\rowbot\else\def\rowbot{-2.4}\fi
+\ifdefined\midx\else\def\midx{1.6}\fi
 
 \begin{document}
 \begin{tikzpicture}[
@@ -47,17 +51,17 @@
 % A closed cube with the OPA icon's outline (static/opa-closed.png: the same 516 x 600 shape,
 % three dark faces, no layers open), drawn 3.6cm tall like the OPA icon (50% above the
 % 2.4cm circles).
-\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (\cubex,2.4)  {\includegraphics[height=3.6cm]{static/opa-closed.png}};
-\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (\cubex,-2.4) {\includegraphics[height=3.6cm]{static/opa-closed.png}};
+\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (\cubex,\rowtop)  {\includegraphics[height=3.6cm]{static/opa-closed.png}};
+\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (\cubex,\rowbot) {\includegraphics[height=3.6cm]{static/opa-closed.png}};
 \else\ifdefined\opaicon
-\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (\cubex,2.4)  {\includegraphics[height=3.6cm]{static/opa-all.png}};
-\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (\cubex,-2.4) {\includegraphics[height=3.6cm]{static/opa-all.png}};
-% With \thirdopa also defined, a third OPA sits between the two rows, drawn from both:
+\node[minimum size=2.4cm, inner sep=0pt] (PA1) at (\cubex,\rowtop)  {\includegraphics[height=3.6cm]{static/opa-all.png}};
+\node[minimum size=2.4cm, inner sep=0pt] (PA3) at (\cubex,\rowbot) {\includegraphics[height=3.6cm]{static/opa-all.png}};
+% With \thirdopa also defined, a third OPA of the same size sits between the two rows, with
+% solid arrows in from both analyses and out to both decision makers (drawn below, after the
+% makers):
 % the "competing-from-analysis-opa-third" variant.
 \ifdefined\thirdopa
-\node[minimum size=2.0cm, inner sep=0pt] (PAM) at (2.6,0) {\includegraphics[height=2.0cm]{static/opa-all.png}};
-\draw[darr] (PA1.south) to[out=-90, in=175] (PAM.172);
-\draw[darr] (PA3.north) to[out=90, in=185] (PAM.188);
+\node[minimum size=2.4cm, inner sep=0pt] (PAM) at (\midx,{(\rowtop+\rowbot)/2}) {\includegraphics[height=3.6cm]{static/opa-all.png}};
 \fi
 \else
 \node[pa]                                  (PA1) at (0,2.4)  {Policy\\Analysis 1};
@@ -73,8 +77,8 @@
 % In the from-analysis variants the makers sit at fixed coordinates, so wider analysis
 % nodes (the 3.6cm cubes) do not push them right.
 \ifdefined\fromanalysis
-\node[bigcirc]                              (PM1) at (4.8,2.4)  {\maker\\Maker 1};
-\node[bigcirc]                              (PM2) at (4.8,-2.4) {\maker\\Maker 2};
+\node[bigcirc]                              (PM1) at (4.8,\rowtop)  {\maker\\Maker 1};
+\node[bigcirc]                              (PM2) at (4.8,\rowbot) {\maker\\Maker 2};
 \else
 \node[bigcirc, right=2.4cm of PA1]          (PM1) {\maker\\Maker 1};
 \node[bigcirc, right=2.4cm of PA3]          (PM2) {\maker\\Maker 2};
@@ -106,6 +110,14 @@
 
 % One frame for every from-analysis variant (the 3.6cm cubes reach x = -1.55 and
 % y = +/-4.2), so all of them have the same size and line up on slides.
-\ifdefined\fromanalysis\path ({\cubex-1.56},4.21) ({\cubex-1.56},-4.21);\fi
+\ifdefined\thirdopa
+% Arrows meet the icons' visible corners (the icon's side corners sit 1.27cm left or right of
+% its centre and 0.9cm above or below it), not the transparent edge of the image.
+\draw[arr, shorten <=2pt, shorten >=2pt] ($(PA1.center)+(1.27,-0.9)$) -- ($(PAM.center)+(-1.27,0.9)$);
+\draw[arr, shorten <=2pt, shorten >=2pt] ($(PA3.center)+(1.27,0.9)$)  -- ($(PAM.center)+(-1.27,-0.9)$);
+\draw[arr, shorten <=2pt] ($(PAM.center)+(1.27,0.9)$)  -- (PM1);
+\draw[arr, shorten <=2pt] ($(PAM.center)+(1.27,-0.9)$) -- (PM2);
+\fi
+\ifdefined\fromanalysis\path ({\cubex-1.56},{\rowtop+1.81}) ({\cubex-1.56},{\rowbot-1.81});\fi
 \end{tikzpicture}
 \end{document}
